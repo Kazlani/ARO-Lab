@@ -42,7 +42,7 @@ def cost(q):
     L_hand_difference = np.linalg.norm(L_hand_tran)**2 + np.linalg.norm(L_hand_rot)**2
     R_hand_difference = np.linalg.norm(R_hand_tran)**2 + np.linalg.norm(R_hand_rot)**2
     
-    return R_hand_difference + L_hand_difference
+    return R_hand_difference + L_hand_difference + 100 * collision(robot, q)**2 + 100 * jointlimitsviolated(robot, q)**2
 
 def callback(q):
     updatevisuals(viz, robot, cube, q)
